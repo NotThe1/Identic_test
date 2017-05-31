@@ -126,7 +126,7 @@ public class SideMenu_Driver {
 		Thread threadIdentify = new Thread(identifySubjects);
 		threadIdentify.start();
 		
-		ShowSubjects showSubjects = new ShowSubjects(threadIdentify,subjects,txtLog);
+		MakeFileKey showSubjects = new MakeFileKey(threadIdentify,subjects,txtLog);
 		Thread threadShow = new Thread(showSubjects);
 		threadShow.start();
 		

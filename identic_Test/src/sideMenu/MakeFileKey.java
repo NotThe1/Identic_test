@@ -6,13 +6,13 @@ import java.util.NoSuchElementException;
 
 import javax.swing.JTextArea;
 
-public class ShowSubjects implements Runnable {
+public class MakeFileKey implements Runnable {
 
 	private ArrayDeque<Path> subjects = new ArrayDeque<Path>();
 	private JTextArea txtLog;
 	private Thread priorThread;
 	
-	public ShowSubjects(Thread priorThread,ArrayDeque<Path> subjects,JTextArea txtLog){
+	public MakeFileKey(Thread priorThread,ArrayDeque<Path> subjects,JTextArea txtLog){
 		this.priorThread = priorThread;
 		this.subjects= subjects;
 		this.txtLog = txtLog;
