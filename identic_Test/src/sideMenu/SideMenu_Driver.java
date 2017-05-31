@@ -43,6 +43,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.text.JTextComponent;
 
+import identic.ManageLists;
+
 public class SideMenu_Driver {
 
 	// SideMenu sm = new SideMenu();
@@ -149,7 +151,9 @@ public class SideMenu_Driver {
 	}// doBtnTwo
 
 	private void doBtnThree() {
-
+		ManageLists ml = new ManageLists();
+		 ml.showDialog();
+		ml = null;
 	}// doBtnThree
 
 	private void doBtnFour() {
