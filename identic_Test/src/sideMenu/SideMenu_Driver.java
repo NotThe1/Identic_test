@@ -39,6 +39,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.text.JTextComponent;
@@ -157,7 +158,15 @@ public class SideMenu_Driver {
 	}// doBtnThree
 
 	private void doBtnFour() {
-
+		AppLogger appLogger = AppLogger.getInstance();
+		appLogger.setDoc(txtApplicationLogger.getStyledDocument());
+		
+		appLogger.addInfo("My Info Message1","info message2");
+		appLogger.addNL();
+		appLogger.addWarning("My Warning Message");
+		appLogger.addNL(5);
+		appLogger.addError("My Error Message");
+		appLogger.addSpecial("My Special Message");
 	}// doBtnFour
 
 	// ---------------------------------------------------------
@@ -448,14 +457,15 @@ public class SideMenu_Driver {
 		JPanel panelRight = new JPanel();
 		splitPane1.setRightComponent(panelRight);
 		GridBagLayout gbl_panelRight = new GridBagLayout();
-		gbl_panelRight.columnWidths = new int[] { 0, 0 };
+		gbl_panelRight.columnWidths = new int[] { 0, 0, 0 };
 		gbl_panelRight.rowHeights = new int[] { 0, 0 };
-		gbl_panelRight.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_panelRight.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
 		gbl_panelRight.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panelRight.setLayout(gbl_panelRight);
 
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 0;
@@ -476,6 +486,20 @@ public class SideMenu_Driver {
 		lblLog = new JLabel("New label");
 		lblLog.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollPane.setColumnHeaderView(lblLog);
+		
+		scrollPane_1 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_1.gridx = 1;
+		gbc_scrollPane_1.gridy = 0;
+		panelRight.add(scrollPane_1, gbc_scrollPane_1);
+		
+		lblNewLabel_1 = new JLabel("Logger");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		scrollPane_1.setColumnHeaderView(lblNewLabel_1);
+		
+		txtApplicationLogger = new JTextPane();
+		scrollPane_1.setViewportView(txtApplicationLogger);
 		splitPane1.setDividerLocation(250);
 
 		JPanel panelStatus = new JPanel();
@@ -627,5 +651,8 @@ public class SideMenu_Driver {
 	private JLabel lblLabel_2;
 	private JLabel lblLabel_3;
 	private JLabel lblStatus;
+	private JScrollPane scrollPane_1;
+	private JLabel lblNewLabel_1;
+	private JTextPane txtApplicationLogger;
 
 }// class GUItemplate
